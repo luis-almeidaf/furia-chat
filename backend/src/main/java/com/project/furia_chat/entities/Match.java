@@ -21,6 +21,12 @@ public class Match {
     @Column(length = 20)
     private String result;
 
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")    
+    private LocalDateTime createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")   
+    private LocalDateTime updatedAt;
+
     public Match() {
     }
 
@@ -61,6 +67,22 @@ public class Match {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
