@@ -1,7 +1,7 @@
 package com.project.furia_chat.controller;
 
-import com.project.furia_chat.domain.ChatInput;
-import com.project.furia_chat.domain.ChatOutput;
+import com.project.furia_chat.dto.ChatInput;
+import com.project.furia_chat.dto.ChatOutput;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
