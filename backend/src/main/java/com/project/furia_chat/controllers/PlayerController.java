@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.project.furia_chat.dto.PlayerDto;
+import com.project.furia_chat.dtos.PlayerDto;
 import com.project.furia_chat.services.PlayerService;
 
 import jakarta.validation.Valid;

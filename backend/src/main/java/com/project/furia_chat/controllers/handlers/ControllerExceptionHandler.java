@@ -1,4 +1,4 @@
-package com.project.furia_chat.controller.handlers;
+package com.project.furia_chat.controllers.handlers;
 
 import java.time.Instant;
 
@@ -9,8 +9,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.project.furia_chat.dto.errors.CustomError;
-import com.project.furia_chat.dto.errors.ValidationError;
+import com.project.furia_chat.dtos.errors.CustomError;
+import com.project.furia_chat.dtos.errors.ValidationError;
 import com.project.furia_chat.services.exceptions.DatabaseException;
 import com.project.furia_chat.services.exceptions.ResourceNotFoundException;
 

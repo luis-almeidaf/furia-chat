@@ -1,7 +1,7 @@
 package com.project.furia_chat.services;
 
-import com.project.furia_chat.dto.PlayerDto;
-import com.project.furia_chat.entity.Player;
+import com.project.furia_chat.dtos.PlayerDto;
+import com.project.furia_chat.entities.Player;
 import com.project.furia_chat.repositories.PlayerRepository;
 import com.project.furia_chat.services.exceptions.DatabaseException;
 import com.project.furia_chat.services.exceptions.ResourceNotFoundException;

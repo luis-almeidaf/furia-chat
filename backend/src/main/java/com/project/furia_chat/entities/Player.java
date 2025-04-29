@@ -1,4 +1,4 @@
-package com.project.furia_chat.entity;
+package com.project.furia_chat.entities;
 
 import jakarta.persistence.*;
 

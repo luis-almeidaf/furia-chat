@@ -1,8 +1,8 @@
-package com.project.furia_chat.dto;
+package com.project.furia_chat.dtos;
 
 import java.time.LocalDateTime;
 
-import com.project.furia_chat.entity.Player;
+import com.project.furia_chat.entities.Player;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

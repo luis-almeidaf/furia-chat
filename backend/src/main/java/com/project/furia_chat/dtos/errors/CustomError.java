@@ -1,4 +1,4 @@
-package com.project.furia_chat.dto.errors;
+package com.project.furia_chat.dtos.errors;
 
 import java.time.Instant;
 
