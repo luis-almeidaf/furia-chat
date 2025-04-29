@@ -2,6 +2,7 @@ package com.project.furia_chat.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -19,6 +20,12 @@ public class Player {
 
     @Column(length = 255)
     private String img;
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")    
+    private LocalDateTime createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")   
+    private LocalDateTime updatedAt;
 
     public Player() {
     }
@@ -60,6 +67,22 @@ public class Player {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
