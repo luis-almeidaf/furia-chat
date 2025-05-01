@@ -1,0 +1,19 @@
+.card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  transition: var(--transition);
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.card-img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
