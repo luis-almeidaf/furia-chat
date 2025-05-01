@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <img
+      class="navbar-img"
+      src="https://raw.githubusercontent.com/luis-almeidaf/image-hosting/refs/heads/main/logo.jpg"
+      alt=""
+    />
+    <button
+      class="navbar-toggle"
+      [ngClass]="{ active: isNavbarOpen() }"
+      (click)="toggleNavbar()"
+      aria-label="Menu de navegação"
+      [attr.aria-expanded]="isNavbarOpen()"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="navbar-menu" [ngClass]="{ active: isNavbarOpen() }">
+      <li><a href="" (click)="toggleNavbar()">Sobre nós</a></li>
+      <li><a href="" (click)="toggleNavbar()">Lineup</a></li>
+      <li><a href="" (click)="toggleNavbar()">Loja</a></li>
+      <li><a href="" (click)="toggleNavbar()">Contato</a></li>
+    </ul>
+  </div>
+</nav>

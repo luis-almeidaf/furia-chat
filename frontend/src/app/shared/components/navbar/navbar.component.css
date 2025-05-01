@@ -1,0 +1,125 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background: var(--bg-elevated);
+  box-shadow: 0 2px 8px var(--shadow);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-width);
+  padding: 0 1.5rem;
+}
+
+.navbar-img {
+  width: 50px;
+  height: 50px;
+}
+
+.navbar-img:hover {
+  opacity: 0.9;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.navbar-menu li a:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar-toggle {
+  display: none;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  z-index: 1001;
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background: var(--text-primary);
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    padding: 4rem 1.5rem;
+    background: var(--bg-elevated);
+    box-shadow: -4px 0 12px var(--shadow);
+    backdrop-filter: blur(12px);
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    padding: 3rem 1rem;
+  }
+
+  .navbar-menu li a {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+}
