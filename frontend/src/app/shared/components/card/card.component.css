@@ -1,0 +1,22 @@
+.card {
+  /* Dimensões */
+  aspect-ratio: 1 / 1; /* Força formato quadrado */
+  width: 100%; /* Ocupa toda a largura disponível */
+  max-width: 240px; /* Limita o tamanho máximo */
+  /* Aparência */
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  /* Layout interno */
+  display: flex;
+  flex-direction: column;
+  /* Animação */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito hover */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px var(--shadow);
+}
