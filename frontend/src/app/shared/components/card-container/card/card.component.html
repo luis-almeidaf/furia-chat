@@ -1,5 +1,9 @@
 <div class="card">
-  <h2></h2>
-  <p></p>
-  <img *ngIf="data.img" [src]="data.img" alt="Player Image" class="card-img" />
+  <h3>{{ data?.nickname || data?.title }}</h3>
+  <p>{{ data?.role || data?.description || data?.result }}</p>
+  <img
+    *ngIf="data?.img"
+    [src]="data?.img"
+    alt="Foto do jogador: {{ data?.nickname }}"
+  />
 </div>
