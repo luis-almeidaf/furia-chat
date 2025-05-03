@@ -17,6 +17,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/furia-chat-websocket").setAllowedOrigins("furia-chat-theta.vercel.app", "http://localhost:4200").withSockJS();
+        registry.addEndpoint("/furia-chat-websocket").setAllowedOrigins("https://furia-chat-theta.vercel.app", "http://localhost:4200").withSockJS();
     }
 }
