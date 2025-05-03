@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { CompatClient, Stomp, StompSubscription } from '@stomp/stompjs';
 import { Message } from '../../models/message.model';
 import SockJS from 'sockjs-client';
+import { environment } from '../../../environments/environment';
 
 export type ListenerCallBack = (message: Message) => void;
 
@@ -13,7 +14,10 @@ export class WebsocketService implements OnDestroy {
   private subscription: StompSubscription | undefined;
 
   constructor() {
-    const socket = new SockJS('http://localhost:8080/furia-chat-websocket');
+    console.log(
+      `Iniciando WebSocket no ambiente: ${environment.environmentName}`
+    );
+    const socket = new SockJS(environment.websocketUrl);
     this.connection = Stomp.over(socket);
     this.connection.connect({}, () => {
       console.log('Websocket conectado');
