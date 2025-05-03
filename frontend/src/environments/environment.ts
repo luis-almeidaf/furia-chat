@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  websocketUrl: 'http://localhost:8080/furia-chat-websocket',
+  apiurl: 'http://localhost:8080/',
   environmentName: 'development',
 };

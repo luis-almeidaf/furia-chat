@@ -1,21 +1,21 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, map, Observable, retry, throwError } from 'rxjs';
-import { ApiResponse, Player } from '../../models/player.model';
+import { ApiResponse } from '../../models/player.model';
 import { CardData } from '../../models/card.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayerService {
-  private apiUrl = 'http://localhost:8080/players';
+  private apiUrl = environment.apiurl;
   private http = inject(HttpClient);
 
   constructor() {}
 
   getPlayers(): Observable<CardData[]> {
-    return this.http.get<ApiResponse>(this.apiUrl).pipe(
+    return this.http.get<ApiResponse>(`${this.apiUrl}players`).pipe(
       map((response) =>
         response.content.map((player) => ({
           nickname: player.nickname,

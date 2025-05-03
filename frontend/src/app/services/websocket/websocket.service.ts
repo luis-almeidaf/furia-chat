@@ -12,12 +12,13 @@ export type ListenerCallBack = (message: Message) => void;
 export class WebsocketService implements OnDestroy {
   private connection: CompatClient;
   private subscription: StompSubscription | undefined;
+  private apiUrl = environment.apiurl;
 
   constructor() {
     console.log(
       `Iniciando WebSocket no ambiente: ${environment.environmentName}`
     );
-    const socket = new SockJS(environment.websocketUrl);
+    const socket = new SockJS(`${this.apiUrl}furia-chat-websocket`);
     this.connection = Stomp.over(socket);
     this.connection.connect({}, () => {
       console.log('Websocket conectado');
