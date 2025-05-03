@@ -1,3 +1,45 @@
 <div class="card-container">
   <app-card *ngFor="let item of cardItems" [data]="item"></app-card>
 </div>
+
+<div class="chat">
+  <div class="chat-messages" #chatMessages>
+    <div *ngFor="let message of messages" class="message">
+      <span class="nickname">{{ message.content.split(": ")[0] }}: </span>
+      <span class="text">{{
+        message.content.split(": ").slice(1).join(": ")
+      }}</span>
+    </div>
+  </div>
+
+  <form [formGroup]="form">
+    <label for="user">Nickname:</label>
+    <input
+      type="text"
+      formControlName="user"
+      class="username"
+      placeholder="Digite seu nick:"
+      [disabled]="isConnected"
+    />
+    <label for="text">Mensagem:</label>
+    <input
+      type="text"
+      formControlName="text"
+      class="message"
+      placeholder="Digite sua mensagem:"
+      [disabled]="!isConnected"
+    />
+    <p>
+      <button (click)="sendMessage()" [disabled]="!isConnected">Enviar</button>
+    </p>
+  </form>
+</div>
+
+<div class="connection-controls">
+  <button type="button" (click)="connect()" [disabled]="isConnected">
+    Conectar
+  </button>
+  <button type="button" (click)="disconnect()" [disabled]="!isConnected">
+    Disconectar
+  </button>
+</div>
