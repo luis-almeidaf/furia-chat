@@ -1,0 +1,15 @@
+.container {
+  max-width: 800px; /* Limita a largura para melhor legibilidade */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 20px;
+  text-align: left; /* Centraliza o texto dentro da div */
+}
+
+.container h2 {
+  margin-bottom: 16px;
+}
+
+.container p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
