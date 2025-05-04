@@ -17,9 +17,9 @@
       <span class="bar"></span>
     </button>
     <ul class="navbar-menu" [ngClass]="{ active: isNavbarOpen() }">
+      <li><a href="/" (click)="toggleNavbar()">Home</a></li>
+      <li><a href="lineup" (click)="toggleNavbar()">Lineup</a></li>
       <li><a href="" (click)="toggleNavbar()">Sobre nós</a></li>
-      <li><a href="" (click)="toggleNavbar()">Lineup</a></li>
-      <li><a href="" (click)="toggleNavbar()">Loja</a></li>
       <li><a href="" (click)="toggleNavbar()">Contato</a></li>
     </ul>
   </div>
