@@ -2,12 +2,10 @@ import {
   AfterViewChecked,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
+  inject,
 } from '@angular/core';
-import { CardData } from '../../models/card.model';
-import { CommonModule } from '@angular/common';
-import { CardComponent } from '../../shared/components/card/card.component';
-import { WebsocketService } from '../../services/websocket/websocket.service';
 import {
   FormControl,
   FormGroup,
@@ -15,7 +13,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CardComponent } from '../../shared/components/card/card.component';
+import { CardData } from '../../models/card.model';
+import { CommonModule } from '@angular/common';
+import { MatchService } from '../../services/match/match.service';
 import { Message } from '../../models/message.model';
+import { WebsocketService } from '../../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-home',
@@ -23,23 +26,20 @@ import { Message } from '../../models/message.model';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements AfterViewChecked {
-  cardItems: CardData[] = [
+export class HomeComponent implements OnInit, AfterViewChecked {
+  private matchService = inject(MatchService);
+  cardItems: CardData[] = [];
+  staticCardItems: CardData[] = [
     {
       title: 'Participe do chat',
-      description: 'Mostre a força da torcida e interaja durante os jogos',
-    },
-    {
-      title: 'Proximos jogos',
-      description: 'Fnatic, 05/05/2025 ás 20horas',
-    },
-    {
-      title: 'Proximos jogos',
-      description: 'Fnatic, 05/05/2025 ás 20horas',
+      description:
+        'Mostre a força do torcedor da fúria e intereja com outros torcedores',
     },
   ];
+
   messages: Message[] = [];
   isConnected: boolean = false;
+  error: string = '';
   @ViewChild('chatMessages') private chatMessagesContainer!: ElementRef;
 
   form: FormGroup = new FormGroup({
@@ -52,8 +52,25 @@ export class HomeComponent implements AfterViewChecked {
 
   constructor(private websocketService: WebsocketService) {}
 
+  ngOnInit(): void {
+    this.loadMatches();
+  }
+
   ngAfterViewChecked(): void {
     this.scrollToBottom();
+  }
+
+  private loadMatches(): void {
+    this.matchService.getMatches().subscribe({
+      next: (data) => {
+        this.cardItems = [...this.staticCardItems, ...data];
+        console.log(this.cardItems);
+      },
+      error: (err: any) => {
+        console.error('Erro ao carregar dados:', err);
+        this.error = 'Não foi possível carregar dados';
+      },
+    });
   }
 
   connect(): void {
@@ -91,9 +108,4 @@ export class HomeComponent implements AfterViewChecked {
       element.scrollTop = element.scrollHeight;
     }
   }
-
-  //click(): void {
-  //this.sendMessage(this.form.value.user, this.form.value.text);
-  //this.form.reset({});
-  //}
 }
