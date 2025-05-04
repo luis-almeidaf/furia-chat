@@ -1,8 +1,48 @@
 <div class="card-container">
   <app-card *ngFor="let item of cardItems" [data]="item"></app-card>
 </div>
-
 <div class="chat">
+  <form [formGroup]="form">
+    <!-- Reorganizando o nickname e os botões de conexão -->
+    <div class="user-connection-container">
+      <label for="user">Nickname:</label>
+      <input
+        type="text"
+        formControlName="user"
+        class="username"
+        placeholder="Digite seu nick:"
+        [disabled]="isConnected"
+      />
+      <div class="connection-controls">
+        <button type="button" (click)="connect()" [disabled]="isConnected">
+          Conectar
+        </button>
+        <button type="button" (click)="disconnect()" [disabled]="!isConnected">
+          Disconectar
+        </button>
+      </div>
+    </div>
+
+    <div class="message-send-container">
+      <label for="text">Mensagem: </label>
+      <input
+        type="text"
+        formControlName="text"
+        class="message"
+        placeholder="Digite sua mensagem:"
+        [disabled]="!isConnected"
+      />
+      <button
+        (click)="sendMessage()"
+        [disabled]="!isConnected"
+        class="btn-send"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+
+  <p>LiveChat</p>
   <div class="chat-messages" #chatMessages>
     <div *ngFor="let message of messages" class="message">
       <span class="nickname">{{ message.content.split(": ")[0] }}: </span>
@@ -11,35 +51,4 @@
       }}</span>
     </div>
   </div>
-
-  <form [formGroup]="form">
-    <label for="user">Nickname:</label>
-    <input
-      type="text"
-      formControlName="user"
-      class="username"
-      placeholder="Digite seu nick:"
-      [disabled]="isConnected"
-    />
-    <label for="text">Mensagem:</label>
-    <input
-      type="text"
-      formControlName="text"
-      class="message"
-      placeholder="Digite sua mensagem:"
-      [disabled]="!isConnected"
-    />
-    <p>
-      <button (click)="sendMessage()" [disabled]="!isConnected">Enviar</button>
-    </p>
-  </form>
-</div>
-
-<div class="connection-controls">
-  <button type="button" (click)="connect()" [disabled]="isConnected">
-    Conectar
-  </button>
-  <button type="button" (click)="disconnect()" [disabled]="!isConnected">
-    Disconectar
-  </button>
 </div>
