@@ -1,6 +1,16 @@
 <div class="card">
-  <h3>{{ data?.nickname || data?.title }}</h3>
-  <p>{{ data?.role || data?.description || data?.result }}</p>
+  <h3 *ngIf="data?.title">{{ data?.title }}</h3>
+  <p *ngIf="data?.description">{{ data?.description }}</p>
+  <div *ngIf="data?.opponent">
+    <h3>Próximo jogo:</h3>
+    <p>{{ data?.opponent }}</p>
+  </div>
+  <p *ngIf="data?.gameDate">
+    <strong>Data:</strong> {{ formatDate(data?.gameDate!) }}
+  </p>
+  <p *ngIf="data?.result"><strong>Resultado:</strong> {{ data?.result }}</p>
+  <p *ngIf="data?.nickname"><strong>Nickname:</strong> {{ data?.nickname }}</p>
+  <p *ngIf="data?.role"><strong>Role:</strong> {{ data?.role }}</p>
   <img
     *ngIf="data?.img"
     [src]="data?.img"

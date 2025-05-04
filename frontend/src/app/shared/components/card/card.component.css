@@ -1,7 +1,7 @@
 .card {
   /* Dimensões */
   aspect-ratio: 1 / 1; /* Força formato quadrado */
-  width: 100%; /* Ocupa toda a largura disponível */
+  width: 240px; /* Ocupa toda a largura disponível */
   max-width: 240px; /* Limita o tamanho máximo */
   /* Aparência */
   background: var(--bg-elevated);
